@@ -571,20 +571,6 @@
     const w = window.innerWidth;
     if(e.clientX > w/2) go(1); else go(-1);
   });
-  // swipe navigation for touch devices (mobile layout)
-  let touchStartX = 0, touchStartY = 0;
-  document.getElementById('stage').addEventListener('touchstart', (e)=>{
-    touchStartX = e.changedTouches[0].clientX;
-    touchStartY = e.changedTouches[0].clientY;
-  }, {passive:true});
-  document.getElementById('stage').addEventListener('touchend', (e)=>{
-    if(!isMobile()) return;
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)*1.5){
-      if(dx < 0) go(1); else go(-1);
-    }
-  }, {passive:true});
   document.getElementById('mobPrev').addEventListener('click', ()=> go(-1));
   document.getElementById('mobNext').addEventListener('click', ()=> go(1));
   render();

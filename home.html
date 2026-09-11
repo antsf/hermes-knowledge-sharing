@@ -2,39 +2,105 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mengenal Hermes — Prahu Hub</title>
 <style>
-  :root{--green:#198F51;--green-dark:#0F6E3B;--orange:#FB8C00;--ink:#16281F;--muted:#5C7566;}
-  body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:#08261A;color:#fff;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
-  .card{max-width:460px;width:100%;}
+  :root{
+    --green:#198F51;
+    --green-dark:#0F6E3B;
+    --green-deep:#093B22;
+    --orange:#FB8C00;
+    --ink:#16281F;
+    --muted:#5C7566;
+    --bg:#FFFFFF;
+    --bg-soft:#F1F8F3;
+    --border:#DCEAE0;
+    --serif:'Georgia','Times New Roman',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(251,140,0,.16), transparent 45%),
+      linear-gradient(160deg,#08261A 0%,#0F6E3B 55%,#198F51 100%);
+    color:#fff;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    padding:32px 24px;overflow-x:hidden;position:relative;
+  }
+
+  .fig{position:absolute;right:-60px;bottom:-60px;width:340px;height:390px;opacity:.4;pointer-events:none;}
+
+  .card{max-width:480px;width:100%;position:relative;z-index:2;}
+
+  .tag{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:8px 18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);width:fit-content;margin-bottom:36px;}
+
   .brand{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;}
   .brand img{height:18px;width:auto;align-self:center;filter:brightness(0) invert(1);}
-  .brand .x{color:rgba(255,255,255,.4);font-size:22px;align-self:center;}
-  .brand b{font-size:28px;font-family:Georgia,'Times New Roman',serif;font-weight:700;}
-  h1{font-size:34px;font-weight:800;margin-bottom:12px;}
-  p{color:#BFE9CD;line-height:1.5;margin-bottom:32px;}
+  .brand .x{color:rgba(255,255,255,.4);font-size:22px;font-weight:300;align-self:center;}
+  .brand .word{font-family:var(--serif);font-size:28px;font-weight:700;letter-spacing:.01em;line-height:1;}
+
+  h1{font-family:var(--serif);font-size:clamp(32px,7vw,42px);font-weight:400;line-height:1.12;margin-bottom:14px;}
+  h1 .hl{color:var(--orange);}
+  p.lead{color:#DCF3E3;line-height:1.6;font-size:17px;margin-bottom:12px;}
+  .meta{display:flex;gap:24px;font-size:13px;color:#BFE9CD;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:40px;flex-wrap:wrap;}
+
   .links{display:flex;flex-direction:column;gap:14px;}
   a.btn{
-    display:block;background:#fff;color:var(--green-dark);text-decoration:none;
-    padding:18px 24px;border-radius:14px;font-weight:800;font-size:17px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:#fff;color:var(--green-dark);text-decoration:none;
+    padding:20px 24px;border-radius:14px;font-weight:800;font-size:17px;
     transition:transform .15s;
   }
-  a.btn:hover{transform:translateY(-2px);}
-  a.btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);}
-  a.btn small{display:block;font-weight:500;color:var(--muted);margin-top:4px;font-size:14px;}
-  a.btn.secondary small{color:#BFE9CD;}
+  a.btn:active{transform:scale(.98);}
+  a.btn .arrow{color:var(--orange);font-family:var(--serif);font-size:22px;}
+  a.btn.secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.28);}
+  a.btn.secondary .arrow{color:#fff;}
+  a.btn small{display:block;font-weight:500;color:var(--muted);margin-top:4px;font-size:13px;}
+  a.btn.secondary small{color:#9FD9B4;}
+
+  footer{margin-top:40px;font-size:12px;color:#9FD9B4;letter-spacing:.04em;}
 </style>
 </head>
 <body>
+
+<svg class="fig" viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="rgba(255,255,255,.35)" stroke-width="1" fill="none">
+    <circle cx="200" cy="90" r="46"/>
+    <path d="M200 136 L200 300"/>
+    <path d="M200 170 L90 60 M200 170 L310 60"/>
+    <path d="M200 170 L60 230 M200 170 L340 230"/>
+    <path d="M200 300 L130 460 M200 300 L270 460"/>
+    <circle cx="200" cy="90" r="70" stroke-dasharray="3 5" opacity=".5"/>
+    <circle cx="200" cy="200" r="180" stroke-dasharray="2 8" opacity=".3"/>
+  </g>
+</svg>
+
 <div class="card">
-  <div class="brand"><img src="assets/prahu-hub-logo.png"><span class="x">×</span><b>Hermes</b></div>
-  <h1>Mengenal Hermes</h1>
-  <p>Knowledge Sharing — Prahu Hub, 12 September 2026</p>
-  <div class="links">
-    <a class="btn" href="index.html">▶ Buka Slide Deck</a>
-    <a class="btn secondary" href="usecase-form.html">📝 Isi Usecase Kerjaan Anda</a>
+  <div class="tag">Knowledge Sharing Session</div>
+  <div class="brand">
+    <img src="assets/prahu-hub-logo.png" alt="Prahu Hub">
+    <span class="x">×</span>
+    <span class="word">Hermes</span>
   </div>
+  <h1>Mengenal <span class="hl">Hermes</span></h1>
+  <p class="lead">Satu rekan kerja baru, selalu standby.</p>
+  <div class="meta">
+    <div>Sabtu, 12 Sept 2026</div>
+    <div>Prahu Hub Office</div>
+  </div>
+
+  <div class="links">
+    <a class="btn" href="index.html">
+      <div>▶ Buka Slide Deck<small>18 slide, navigasi swipe/panah</small></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="btn secondary" href="usecase-form.html">
+      <div>Isi Usecase Kerjaan Anda<small>Ceritakan kerjaan sehari-hari Anda</small></div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <footer>Knowledge Sharing "Mengenal Hermes" — Prahu Hub</footer>
 </div>
+
 </body>
 </html>

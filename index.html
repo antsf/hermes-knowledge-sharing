@@ -107,6 +107,7 @@
   .cap-hero .txt .num{font-family:var(--serif);font-size:26px;color:var(--orange);margin-bottom:18px;display:block;}
   .cap-hero .txt h2{font-size:58px;max-width:760px;}
   .cap-hero .txt p{font-size:24px;color:var(--muted);margin-top:22px;max-width:640px;line-height:1.55;}
+  .cap-hero .txt .relevance{display:inline-flex;background:var(--bg-soft);color:var(--green-dark);border:1px solid var(--border);border-radius:999px;padding:8px 18px;font-size:15px;font-weight:700;margin-top:22px;}
 
   /* Human quote card */
   .quote-card{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:1400px;position:relative;}
@@ -124,6 +125,11 @@
   .story .panel .tag{display:inline-flex;background:var(--bg-soft);color:var(--green-dark);border:1px solid var(--border);border-radius:999px;padding:10px 22px;font-size:16px;font-weight:800;margin-bottom:26px;}
   .story .panel h2{font-size:50px;max-width:640px;}
   .story .panel p{font-size:22px;color:var(--muted);margin-top:20px;line-height:1.55;max-width:600px;}
+  .story .also{margin-top:32px;padding-top:26px;border-top:1px solid var(--border);}
+  .story .also .lbl{font-size:14px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .story .also ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .story .also li{font-size:19px;color:var(--ink);display:flex;gap:12px;}
+  .story .also li::before{content:'○';color:var(--orange);font-size:12px;margin-top:6px;}
   .story .visual{flex:none;width:520px;}
   .flowcard{background:var(--green-deep);border-radius:28px;padding:42px;color:#fff;display:flex;flex-direction:column;gap:0;}
   .flowcard .step{display:flex;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.12);font-size:19px;line-height:1.4;}
@@ -204,6 +210,7 @@
     .cap-hero .icon{width:160px;height:160px;border-radius:28px;}
     .cap-hero .txt h2{font-size:32px;}
     .cap-hero .txt p{font-size:17px;}
+    .cap-hero .txt .relevance{font-size:13px;padding:6px 14px;margin-top:16px;}
 
     .quote-card blockquote{font-size:30px;}
     .quote-card .mark{font-size:70px;}
@@ -212,6 +219,8 @@
     .story .visual{width:100%;}
     .story .panel h2{font-size:28px;}
     .story .panel p{font-size:17px;}
+    .story .also{margin-top:24px;padding-top:20px;}
+    .story .also li{font-size:16px;}
     .flowcard{padding:26px;}
     .flowcard .step{font-size:16px;padding:14px 0;}
 
@@ -278,6 +287,7 @@
 <section class="slide" data-title="Duel">
   <div class="eyebrow">Satu Beda Besar</div>
   <h2>Menjawab, atau mengerjakan?</h2>
+  <div class="lead" style="margin-top:-10px;margin-bottom:10px;">Ini bedanya asisten yang cuma bisa ngomong, sama yang beneran turun tangan.</div>
   <div class="duel">
     <div class="side no">
       <div class="k">Chatbot</div>
@@ -287,7 +297,7 @@
     <div class="divider-line"></div>
     <div class="side yes">
       <div class="k">Hermes</div>
-      <h3>Nah, iki baru beneran ngerjain.</h3>
+      <h3>Nah, ini baru beneran ngerjain.</h3>
       <p>Buka aplikasi, cek data, benerin, kirim laporan, terus lapor balik ke kamu lengkap sama buktinya.</p>
     </div>
   </div>
@@ -324,30 +334,9 @@
   <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">05 / 15</div></div>
 </section>
 
-<!-- 6 CAPABILITY 1 -->
+<!-- 6 CAPABILITY 1: CHAT & TASK BOARD (universal, all divisions) -->
 <section class="slide" data-title="Kemampuan 1">
   <div class="eyebrow">Yang Bisa Ia Bantu — 1 / 4</div>
-  <div class="cap-hero">
-    <div class="icon">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="40" width="140" height="120" rx="12" stroke="#fff" stroke-width="2"/>
-        <path d="M60 90 L45 105 L60 120" stroke="#FB8C00" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M140 90 L155 105 L140 120" stroke="#FB8C00" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M115 80 L85 130" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="txt">
-      <span class="num">01</span>
-      <h2>Kode &amp; aplikasi, bukan sekadar teori</h2>
-      <p>Baca, benerin, dan tes langsung kode di project beneran: Flutter, backend, dashboard. Nggak cuma jelasin caranya doang.</p>
-    </div>
-  </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">06 / 15</div></div>
-</section>
-
-<!-- 7 CAPABILITY 2 -->
-<section class="slide soft" data-title="Kemampuan 2">
-  <div class="eyebrow">Yang Bisa Ia Bantu — 2 / 4</div>
   <div class="cap-hero">
     <div class="icon">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -359,17 +348,18 @@
       </svg>
     </div>
     <div class="txt">
-      <span class="num">02</span>
+      <span class="num">01</span>
       <h2>Ikut di percakapan kerja kamu</h2>
       <p>Baca dan balas chat di Mattermost, urus task board, update status. Ya di tempat yang emang udah biasa kamu pakai.</p>
+      <div class="relevance">Relevan buat semua divisi</div>
     </div>
   </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">07 / 15</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">06 / 15</div></div>
 </section>
 
-<!-- 8 CAPABILITY 3 -->
-<section class="slide" data-title="Kemampuan 3">
-  <div class="eyebrow">Yang Bisa Ia Bantu — 3 / 4</div>
+<!-- 7 CAPABILITY 2: DOKUMEN & CATATAN (universal, all divisions) -->
+<section class="slide soft" data-title="Kemampuan 2">
+  <div class="eyebrow">Yang Bisa Ia Bantu — 2 / 4</div>
   <div class="cap-hero">
     <div class="icon">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -381,17 +371,18 @@
       </svg>
     </div>
     <div class="txt">
-      <span class="num">03</span>
+      <span class="num">02</span>
       <h2>Menulis dokumen, bukan cuma draft kasar</h2>
       <p>Laporan, catatan riset, spreadsheet, dokumentasi. Hasil siap pakai, bukan cuma poin-poin mentah.</p>
+      <div class="relevance">Relevan buat semua divisi</div>
     </div>
   </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">08 / 15</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">07 / 15</div></div>
 </section>
 
-<!-- 9 CAPABILITY 4 -->
-<section class="slide soft" data-title="Kemampuan 4">
-  <div class="eyebrow">Yang Bisa Ia Bantu — 4 / 4</div>
+<!-- 8 CAPABILITY 3: BROWSER & HP (universal, all divisions) -->
+<section class="slide" data-title="Kemampuan 3">
+  <div class="eyebrow">Yang Bisa Ia Bantu — 3 / 4</div>
   <div class="cap-hero">
     <div class="icon">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -402,9 +393,32 @@
       </svg>
     </div>
     <div class="txt">
-      <span class="num">04</span>
+      <span class="num">03</span>
       <h2>Sampai buka HP fisik untuk uji coba</h2>
       <p>Buka website, isi form, sampai tes aplikasi langsung di HP: lewat Telegram, WhatsApp, atau desktop.</p>
+      <div class="relevance">Relevan buat semua divisi</div>
+    </div>
+  </div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">08 / 15</div></div>
+</section>
+
+<!-- 9 CAPABILITY 4: KODE & APLIKASI (tim teknis, bonus) -->
+<section class="slide soft" data-title="Kemampuan 4">
+  <div class="eyebrow">Yang Bisa Ia Bantu — 4 / 4</div>
+  <div class="cap-hero">
+    <div class="icon">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="40" width="140" height="120" rx="12" stroke="#fff" stroke-width="2"/>
+        <path d="M60 90 L45 105 L60 120" stroke="#FB8C00" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M140 90 L155 105 L140 120" stroke="#FB8C00" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M115 80 L85 130" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="txt">
+      <span class="num">04</span>
+      <h2>Kode &amp; aplikasi, bukan sekadar teori</h2>
+      <p>Baca, benerin, dan tes langsung kode di project beneran: Flutter, backend, dashboard. Nggak cuma jelasin caranya doang.</p>
+      <div class="relevance">Bonus buat tim Programmer</div>
     </div>
   </div>
   <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">09 / 15</div></div>
@@ -418,7 +432,7 @@
     <div class="pill">💬 Telegram</div>
     <div class="pill">📱 WhatsApp</div>
     <div class="pill">🖥️ Desktop App</div>
-    <div class="pill">⌨️ Command Line</div>
+    <div class="pill">⌨️ Command Line (tim teknis)</div>
   </div>
   <div class="lead">Nggak perlu install apa-apa, nggak perlu belajar aplikasi baru.</div>
   <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">10 / 15</div></div>
@@ -450,6 +464,14 @@
       <div class="tag">PHBID Darat</div>
       <h2>"Cari order ini, rangkum, kirim ke email saya."</h2>
       <p>Cukup satu kalimat, Hermes yang ngurus sisanya: buka sistem, cari data, susun laporan rapi, kirim emailnya. Kamu tinggal cek hasilnya.</p>
+      <div class="also">
+        <div class="lbl">Juga bisa buat divisi lain</div>
+        <ul>
+          <li>Rekap penjualan mingguan tanpa nyalin manual dari banyak sheet</li>
+          <li>Susun laporan absensi atau payroll bulanan jadi format siap kirim</li>
+          <li>Cek dan rangkum status invoice dari beberapa klien sekaligus</li>
+        </ul>
+      </div>
     </div>
     <div class="visual">
       <div class="flowcard">

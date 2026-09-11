@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Mengenal Hermes — Tema Hermes Agent</title>
+<style>
+  :root{
+    --blue:#1B1BFF;
+    --blue-deep:#0A0ACC;
+    --blue-dark:#06063D;
+    --ink:#FFFFFF;
+    --muted:#AFAFFF;
+    --line:rgba(255,255,255,.22);
+    --line-soft:rgba(255,255,255,.1);
+    --paper:#F4F4FF;
+    --paper-ink:#0A0A2E;
+    --serif:'Georgia','Times New Roman',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;background:#000;overflow:hidden;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;}
+  #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;}
+  .viewport{width:1920px;height:1080px;position:relative;transform-origin:center center;}
+  .slide{
+    position:absolute;inset:0;background:var(--blue);
+    background-image:radial-gradient(circle at 82% 8%, rgba(255,255,255,.08), transparent 40%);
+    display:none;flex-direction:column;padding:84px 130px 108px;color:var(--ink);
+    overflow:hidden;
+  }
+  .slide.active{display:flex;}
+  .slide.light{background:var(--paper);color:var(--paper-ink);background-image:none;}
+  .slide.deep{background:var(--blue-dark);}
+
+  .noise{position:absolute;inset:0;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .topbar{position:fixed;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;z-index:60;pointer-events:none;}
+  .topbar .brand{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.02em;color:rgba(255,255,255,.85);}
+  .topbar .steps-dots{display:flex;gap:8px;}
+  .topbar .d{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);}
+  .topbar .d.now{background:#fff;}
+  .topbar .d.done{background:rgba(255,255,255,.6);}
+
+  .label{font-size:14px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+  .slide.light .label{color:#5757D9;}
+  .label::before{content:'○ ';}
+
+  h1{font-family:var(--serif);font-size:96px;font-weight:400;line-height:1.02;letter-spacing:-0.01em;text-transform:uppercase;}
+  h2{font-family:var(--serif);font-size:58px;font-weight:400;line-height:1.08;letter-spacing:-0.005em;margin-bottom:36px;text-transform:uppercase;}
+  .lead{font-size:24px;color:var(--muted);line-height:1.6;margin-top:26px;max-width:1050px;font-weight:400;}
+  .slide.light .lead{color:#4A4A7A;}
+
+  .footer{position:absolute;left:130px;right:130px;bottom:52px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+  .slide.light .footer{color:#8888B8;}
+
+  /* cover */
+  .cover{align-items:flex-start;justify-content:center;position:relative;}
+  .cover .tag{border:1px solid var(--line);border-radius:999px;padding:9px 20px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);width:fit-content;margin-bottom:44px;}
+  .cover h1{max-width:1400px;}
+  .cover .lead{font-size:26px;max-width:1050px;}
+  .cover .meta{margin-top:56px;display:flex;gap:48px;font-size:16px;color:rgba(255,255,255,.55);font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  .cover .meta b{color:#fff;}
+  .fig{position:absolute;right:-40px;bottom:-60px;width:640px;height:740px;opacity:.9;}
+
+  /* divider */
+  .divider{justify-content:center;position:relative;}
+  .divider .num-big{font-family:var(--serif);font-size:340px;font-weight:400;color:rgba(255,255,255,.07);line-height:1;position:absolute;left:90px;bottom:-70px;}
+  .divider h1{font-size:74px;max-width:1250px;position:relative;z-index:2;}
+  .divider .lead{position:relative;z-index:2;}
+
+  /* two column */
+  .cols{display:flex;gap:64px;flex:1;align-items:stretch;margin-top:10px;}
+  .col{flex:1;display:flex;flex-direction:column;justify-content:center;}
+
+  .terminal{background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:4px;padding:32px;font-family:'SF Mono',Consolas,monospace;font-size:19px;line-height:1.9;flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .terminal .prompt{color:var(--muted);}
+  .terminal .prompt::before{content:'❯ ';color:#7A7AFF;}
+  .terminal .resp{color:#fff;padding-left:20px;margin-top:8px;margin-bottom:20px;opacity:.9;}
+  .terminal .tag{color:#7A7AFF;font-weight:700;}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;margin-top:16px;flex:1;}
+  th,td{padding:24px 20px;text-align:left;font-size:20px;border-bottom:1px solid var(--line-soft);}
+  .slide.light th,.slide.light td{border-bottom:1px solid rgba(10,10,46,.12);}
+  th{font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700;}
+  .slide.light th{color:#5757D9;}
+  td.yes{color:#7EFFB2;font-weight:700;}
+  td.no{color:#FF7A7A;font-weight:700;}
+  .slide.light td.yes{color:#0A8A46;}
+  .slide.light td.no{color:#C23A3A;}
+
+  /* steps */
+  .steps{display:flex;flex-direction:column;gap:0;margin-top:16px;flex:1;justify-content:center;}
+  .step{display:flex;gap:36px;align-items:flex-start;padding:26px 0;border-top:1px solid var(--line-soft);}
+  .slide.light .step{border-top:1px solid rgba(10,10,46,.12);}
+  .step:last-child{border-bottom:1px solid var(--line-soft);}
+  .slide.light .step:last-child{border-bottom:1px solid rgba(10,10,46,.12);}
+  .step .idx{flex:none;font-family:var(--serif);font-size:34px;color:var(--muted);width:70px;}
+  .slide.light .step .idx{color:#7A7AD9;}
+  .step .txt h3{font-size:27px;font-weight:700;margin-bottom:6px;}
+  .step .txt p{font-size:19px;color:var(--muted);line-height:1.5;}
+  .slide.light .step .txt p{color:#5A5A8A;}
+
+  /* card grid */
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line-soft);margin-top:16px;flex:1;}
+  .slide.light .grid2{background:rgba(10,10,46,.12);}
+  .card{background:var(--blue);padding:40px;display:flex;flex-direction:column;gap:12px;}
+  .slide.light .card{background:var(--paper);}
+  .card .n{font-family:var(--serif);font-size:15px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;}
+  .slide.light .card .n{color:#7A7AD9;}
+  .card h3{font-size:26px;font-weight:700;}
+  .card p{font-size:18px;color:var(--muted);line-height:1.5;}
+  .slide.light .card p{color:#5A5A8A;}
+
+  .pill-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:12px 24px;font-size:17px;font-weight:600;color:#fff;}
+  .slide.light .pill{border-color:rgba(10,10,46,.2);color:#0A0A2E;}
+
+  .checklist{display:flex;flex-direction:column;gap:0;margin-top:14px;flex:1;justify-content:center;}
+  .checklist .item{display:flex;gap:24px;align-items:flex-start;font-size:24px;line-height:1.55;padding:20px 0;border-top:1px solid var(--line-soft);}
+  .checklist .item:last-child{border-bottom:1px solid var(--line-soft);}
+  .checklist .mark{flex:none;font-family:var(--serif);font-size:22px;color:#7EFFB2;}
+  .checklist .cross .mark{color:#FF7A7A;}
+
+  .quote{font-family:var(--serif);font-size:46px;font-weight:400;line-height:1.35;max-width:1350px;letter-spacing:-0.005em;}
+
+  .discover-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line-soft);margin-top:16px;flex:1;align-content:stretch;}
+  .discover-card{background:var(--paper);padding:36px;display:flex;flex-direction:column;gap:10px;}
+  .discover-card .q{font-size:13px;font-weight:700;color:#7A7AD9;letter-spacing:.14em;text-transform:uppercase;}
+  .discover-card h3{font-size:24px;font-weight:700;line-height:1.25;color:#0A0A2E;}
+  .discover-card p{font-size:17px;color:#5A5A8A;line-height:1.45;}
+
+  .worksheet{flex:1;border:1px solid rgba(10,10,46,.2);border-radius:4px;display:flex;flex-direction:column;justify-content:center;gap:30px;padding:56px;margin-top:8px;}
+  .worksheet .li{display:flex;align-items:center;gap:24px;}
+  .worksheet .li .lbl{font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7A7AD9;flex:none;width:280px;}
+  .worksheet .li .fill{flex:1;border-bottom:1px solid rgba(10,10,46,.3);height:36px;}
+
+  .speaker-note{position:absolute;bottom:0;left:0;right:0;background:#000;color:#AFAFFF;font-size:15px;padding:14px 40px;display:none;}
+  body.notes-on .speaker-note{display:block;}
+  body.notes-on .slide{padding-bottom:150px;}
+
+  #progress{position:fixed;left:0;bottom:0;height:4px;background:#fff;z-index:70;transition:width .25s;}
+  #counter{position:fixed;right:28px;bottom:22px;color:#fff;font-size:14px;font-weight:700;z-index:70;background:rgba(0,0,0,.4);padding:8px 16px;border-radius:2px;letter-spacing:.05em;}
+  #hint{position:fixed;left:28px;bottom:22px;color:#fff;font-size:13px;font-weight:600;z-index:70;background:rgba(0,0,0,.4);padding:8px 16px;border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="brand">HERMES × PRAHU HUB</div><div class="steps-dots" id="dots"></div></div>
+<div id="stage"><div class="viewport" id="viewport">
+
+<!-- 1 COVER -->
+<section class="slide active cover">
+  <div class="noise"></div>
+  <div class="tag">Open Knowledge Session</div>
+  <h1>The Agent<br>That Works<br>With You.</h1>
+  <div class="lead">Kenalan dengan Hermes — AI agent yang sudah membantu tim teknis menyelesaikan pekerjaan sehari-hari. Hari ini kita cari tahu bersama bagian mana dari kerjaan Anda yang bisa ia bantu.</div>
+  <div class="meta"><div>Knowledge Sharing</div><div><b>Sabtu, 12 September 2026</b></div><div>Prahu Hub Office</div></div>
+  <svg class="fig" viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="rgba(255,255,255,.5)" stroke-width="1" fill="none">
+      <circle cx="200" cy="90" r="46"/>
+      <path d="M200 136 L200 300"/>
+      <path d="M200 170 L90 60 M200 170 L310 60"/>
+      <path d="M200 170 L60 230 M200 170 L340 230"/>
+      <path d="M200 170 L40 170 M200 170 L360 170"/>
+      <path d="M200 300 L130 460 M200 300 L270 460"/>
+      <path d="M90 60 L60 20 M90 60 L40 90"/>
+      <path d="M310 60 L340 20 M310 60 L360 90"/>
+      <circle cx="200" cy="90" r="70" stroke-dasharray="3 5" opacity=".5"/>
+      <circle cx="200" cy="200" r="180" stroke-dasharray="2 8" opacity=".3"/>
+    </g>
+  </svg>
+  <div class="speaker-note">Buka santai: perkenalkan diri, sampaikan sesi ini pengenalan + diskusi terbuka — belum ada akses dibagikan hari ini.</div>
+</section>
+
+<!-- 2 AGENDA -->
+<section class="slide light">
+  <div class="label">Rute Hari Ini</div>
+  <h2>Empat Pemberhentian</h2>
+  <div class="steps">
+    <div class="step"><div class="idx">01</div><div class="txt"><h3>Apa itu AI Agent?</h3><p>Konsep dasar — beda dengan chatbot yang selama ini kita kenal.</p></div></div>
+    <div class="step"><div class="idx">02</div><div class="txt"><h3>Kenalan dengan Hermes</h3><p>Apa yang bisa dilakukannya, dan bagaimana cara kerjanya.</p></div></div>
+    <div class="step"><div class="idx">03</div><div class="txt"><h3>Mari Cari Bersama</h3><p>Diskusi terbuka — kerjaan Anda sehari-hari, dan potensi bantuan Hermes.</p></div></div>
+    <div class="step"><div class="idx">04</div><div class="txt"><h3>Batasan &amp; Langkah Selanjutnya</h3><p>Apa yang belum bisa dilakukan, dan rencana ke depan.</p></div></div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>02 / 18</div></div>
+</section>
+
+<!-- 3 DIVIDER 1 -->
+<section class="slide deep divider">
+  <div class="num-big">01</div>
+  <div class="label">Bagian Satu</div>
+  <h1 style="font-size:78px;">Apa Itu<br>AI Agent?</h1>
+  <div class="lead">Dari nol — tanpa asumsi Anda sudah pernah dengar istilah ini.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>03 / 18</div></div>
+</section>
+
+<!-- 4 TERMINAL COMPARE -->
+<section class="slide">
+  <div class="label">Konsep Dasar</div>
+  <h2>Bukan Chatbot Biasa</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="terminal">
+        <div class="prompt">Apa itu domisili?</div>
+        <div class="resp"><span class="tag">[CHATBOT]</span><br>Domisili adalah tempat tinggal resmi seseorang berdasarkan KTP...</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="terminal">
+        <div class="prompt">Cek kenapa video kedua menimpa video pertama saat update status</div>
+        <div class="resp"><span class="tag">[HERMES]</span><br>Baca kode → temukan penyebab di satu fungsi → perbaiki → jalankan test → laporkan hasil.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>04 / 18</div></div>
+  <div class="speaker-note">Chatbot = jawab teks. Agent = punya "tangan" untuk bertindak sungguhan.</div>
+</section>
+
+<!-- 5 TABLE -->
+<section class="slide">
+  <div class="label">Perbandingan</div>
+  <h2>Chatbot vs AI Agent</h2>
+  <table>
+    <tr><th></th><th>Chatbot Klasik</th><th>Hermes</th></tr>
+    <tr><td>Menjawab teks</td><td class="yes">✓ Ya</td><td class="yes">✓ Ya</td></tr>
+    <tr><td>Membaca kode/file sungguhan</td><td class="no">✗ Tidak</td><td class="yes">✓ Ya</td></tr>
+    <tr><td>Menjalankan perintah komputer</td><td class="no">✗ Tidak</td><td class="yes">✓ Ya</td></tr>
+    <tr><td>Kirim pesan / update aplikasi lain</td><td class="no">✗ Tidak</td><td class="yes">✓ Ya</td></tr>
+    <tr><td>Ingat konteks lintas hari</td><td class="no">✗ Tidak</td><td class="yes">✓ Ya, memori</td></tr>
+  </table>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>05 / 18</div></div>
+</section>
+
+<!-- 6 DIVIDER 2 -->
+<section class="slide deep divider">
+  <div class="num-big">02</div>
+  <div class="label">Bagian Dua</div>
+  <h1 style="font-size:78px;">Kenalan<br>Dengan Hermes</h1>
+  <div class="lead">Siapa dia, dan apa saja yang secara teknis bisa dilakukannya.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>06 / 18</div></div>
+</section>
+
+<!-- 7 DEFINITION -->
+<section class="slide light">
+  <div class="label">Definisi Singkat</div>
+  <h2 style="max-width:1300px;">Rekan Kerja AI yang Sudah Bekerja</h2>
+  <div class="lead" style="font-size:26px;">Hermes dipakai tim teknis untuk investigasi bug, perbaikan kode, riset, penulisan dokumentasi, sampai koordinasi lewat chat — semuanya lewat percakapan biasa, bukan lewat tools yang rumit.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>07 / 18</div></div>
+</section>
+
+<!-- 8 CAPABILITIES GRID -->
+<section class="slide">
+  <div class="label">Kemampuan</div>
+  <h2>Apa Saja yang Bisa "Disentuh"</h2>
+  <div class="grid2">
+    <div class="card"><div class="n">01 — Kode</div><h3>Kode &amp; Aplikasi</h3><p>Baca, tulis, uji kode di berbagai project — Flutter, backend, dashboard.</p></div>
+    <div class="card"><div class="n">02 — Chat</div><h3>Chat &amp; Task Board</h3><p>Baca &amp; balas pesan Mattermost, kelola task board, update status kerjaan.</p></div>
+    <div class="card"><div class="n">03 — Dokumen</div><h3>Dokumen &amp; Catatan</h3><p>Laporan, catatan riset, spreadsheet, dokumentasi project.</p></div>
+    <div class="card"><div class="n">04 — Web &amp; Device</div><h3>Browser &amp; Perangkat</h3><p>Buka website, isi form, uji aplikasi langsung di HP fisik.</p></div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>08 / 18</div></div>
+</section>
+
+<!-- 9 ACCESS -->
+<section class="slide light">
+  <div class="label">Cara Mengaksesnya</div>
+  <h2 style="max-width:1300px;">Diajak Ngobrol Lewat Chat Biasa</h2>
+  <div class="pill-row">
+    <div class="pill">Telegram</div>
+    <div class="pill">WhatsApp</div>
+    <div class="pill">Desktop App</div>
+    <div class="pill">Command Line (Tim Teknis)</div>
+  </div>
+  <div class="lead">Tidak perlu install software baru atau belajar interface asing — ngobrol seperti biasa, Hermes yang menyesuaikan.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>09 / 18</div></div>
+</section>
+
+<!-- 10 DIVIDER 3 -->
+<section class="slide deep divider">
+  <div class="num-big">03</div>
+  <div class="label">Bagian Tiga — Interaktif</div>
+  <h1 style="font-size:70px;">Mari Cari<br>Bersama</h1>
+  <div class="lead">Bagian ini bukan presentasi satu arah. Ceritakan kerjaan sehari-hari Anda — kita cari tahu bersama mana yang berpotensi dibantu Hermes.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>10 / 18</div></div>
+</section>
+
+<!-- 11 DISCOVERY -->
+<section class="slide light">
+  <div class="label">Kerangka Diskusi</div>
+  <h2>Empat Pertanyaan Pemandu</h2>
+  <div class="discover-grid">
+    <div class="discover-card"><div class="q">01</div><h3>Kerjaan apa yang paling berulang &amp; memakan waktu?</h3><p>Sesuatu yang dilakukan hampir tiap hari dengan langkah mirip-mirip.</p></div>
+    <div class="discover-card"><div class="q">02</div><h3>Kerjaan apa yang butuh "cek ke banyak tempat" dulu?</h3><p>Cek status di satu sistem, cocokkan ke sistem/dokumen lain.</p></div>
+    <div class="discover-card"><div class="q">03</div><h3>Laporan/dokumen apa yang sering ditulis ulang?</h3><p>Rekap atau ringkasan dengan format serupa tiap periode.</p></div>
+    <div class="discover-card"><div class="q">04</div><h3>Kendala apa yang sering "menunggu orang lain" dulu?</h3><p>Koordinasi lintas tim yang bisa dibantu ditelusuri lebih dulu.</p></div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>11 / 18</div></div>
+</section>
+
+<!-- 12 WORKSHEET -->
+<section class="slide">
+  <div class="label">Lembar Kerja Bersama</div>
+  <h2>Mari Isi Bersama</h2>
+  <div class="worksheet" style="background:var(--paper);color:#0A0A2E;">
+    <div class="li"><div class="lbl">Nama / Divisi</div><div class="fill"></div></div>
+    <div class="li"><div class="lbl">Kerjaan Sehari-hari</div><div class="fill"></div></div>
+    <div class="li"><div class="lbl">Bagian Paling Makan Waktu</div><div class="fill"></div></div>
+    <div class="li"><div class="lbl">Ide Bantuan Hermes</div><div class="fill"></div></div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>12 / 18</div></div>
+</section>
+
+<!-- 13 PRODUCT CONTEXT -->
+<section class="slide light">
+  <div class="label">Konteks Produk Kita</div>
+  <h2 style="max-width:1300px;">Semua Produk Ini Punya Proses Harian</h2>
+  <div class="pill-row">
+    <div class="pill">PH Bid — Laut</div>
+    <div class="pill">PH Bid — Darat</div>
+    <div class="pill">RoRo — e-Ticketing</div>
+    <div class="pill">Dashboard Monitoring &amp; Billing</div>
+  </div>
+  <div class="lead">Belum ada jawaban baku untuk masing-masing produk ini — itu justru yang mau kita gali sama-sama di sesi diskusi. Siapa yang pegang operasional harian, ayo cerita.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>13 / 18</div></div>
+</section>
+
+<!-- 14 DIVIDER 4 -->
+<section class="slide deep divider">
+  <div class="num-big">04</div>
+  <div class="label">Bagian Empat</div>
+  <h1 style="font-size:70px;">Batasan &amp;<br>Langkah Berikutnya</h1>
+  <div class="lead">Supaya ekspektasi kita sama-sama realistis.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>14 / 18</div></div>
+</section>
+
+<!-- 15 LIMITATIONS -->
+<section class="slide">
+  <div class="label">Yang Perlu Dipahami</div>
+  <h2>Bukan Pengganti Keputusan Manusia</h2>
+  <div class="checklist">
+    <div class="item"><div class="mark">✓</div>Selalu minta konfirmasi sebelum aksi sensitif (posting publik, ubah data penting, hapus sesuatu).</div>
+    <div class="item"><div class="mark">✓</div>Menunjukkan bukti nyata dari setiap pekerjaan — bukan klaim kosong.</div>
+    <div class="item cross"><div class="mark">✕</div>Tidak menggantikan review &amp; approval manusia untuk perubahan ke sistem produksi.</div>
+    <div class="item cross"><div class="mark">✕</div>Bisa saja salah — hasil kerja tetap perlu dicek, terutama untuk hal berdampak ke client.</div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>15 / 18</div></div>
+</section>
+
+<!-- 16 NEXT STEPS -->
+<section class="slide light">
+  <div class="label">Status &amp; Rencana</div>
+  <h2 style="max-width:1400px;">Langkah Berikutnya Bergantung Diskusi Kita</h2>
+  <div class="steps">
+    <div class="step"><div class="idx">01</div><div class="txt"><h3>Kumpulkan ide dari sesi hari ini</h3><p>Jawaban lembar kerja dirangkum jadi daftar use case per divisi.</p></div></div>
+    <div class="step"><div class="idx">02</div><div class="txt"><h3>Uji coba terbatas</h3><p>Beberapa use case paling relevan dicoba bersama staff yang mengusulkan.</p></div></div>
+    <div class="step"><div class="idx">03</div><div class="txt"><h3>Perluasan akses bertahap</h3><p>Berdasarkan hasil uji coba, akses diperluas ke tim yang relevan.</p></div></div>
+  </div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>16 / 18</div></div>
+</section>
+
+<!-- 17 QUOTE -->
+<section class="slide deep">
+  <div class="label">Intinya</div>
+  <div class="quote">Hermes bukan menggantikan pekerjaan kita — dia mengurus bagian yang berulang dan memakan waktu, supaya kita bisa fokus ke hal yang butuh pertimbangan manusia.</div>
+  <div class="footer"><div>Hermes × Prahu Hub</div><div>17 / 18</div></div>
+</section>
+
+<!-- 18 CLOSING -->
+<section class="slide cover">
+  <div class="noise"></div>
+  <div class="tag">Tanya Jawab</div>
+  <h1 style="font-size:88px;">Sekarang,<br>Giliran Anda<br>Bercerita.</h1>
+  <div class="lead">Ceritakan kerjaan sehari-hari Anda — kita cari tahu bersama mana yang bisa dibantu Hermes.</div>
+  <svg class="fig" viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="rgba(255,255,255,.5)" stroke-width="1" fill="none">
+      <circle cx="200" cy="90" r="46"/>
+      <path d="M200 136 L200 300"/>
+      <path d="M200 170 L90 60 M200 170 L310 60"/>
+      <path d="M200 170 L60 230 M200 170 L340 230"/>
+      <path d="M200 300 L130 460 M200 300 L270 460"/>
+      <circle cx="200" cy="90" r="70" stroke-dasharray="3 5" opacity=".5"/>
+      <circle cx="200" cy="200" r="180" stroke-dasharray="2 8" opacity=".3"/>
+    </g>
+  </svg>
+  <div class="footer" style="position:absolute;bottom:52px;left:130px;right:130px;"><div>Hermes × Prahu Hub</div><div>18 / 18</div></div>
+</section>
+
+</div></div>
+
+<div id="progress"></div>
+<div id="counter">1 / 18</div>
+<div id="hint">← → navigasi · N catatan presenter</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let idx = parseInt(localStorage.getItem('hermes-theme-deck-slide')||'0',10);
+  if(isNaN(idx)||idx<0||idx>=total) idx = 0;
+  const dots = document.getElementById('dots');
+  for(let i=0;i<total;i++){ const d=document.createElement('div'); d.className='d'; dots.appendChild(d); }
+  function render(){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+    document.getElementById('counter').textContent = (idx+1)+' / '+total;
+    document.getElementById('progress').style.width = ((idx+1)/total*100)+'%';
+    Array.from(dots.children).forEach((d,i)=>{ d.classList.toggle('done', i<idx); d.classList.toggle('now', i===idx); });
+    localStorage.setItem('hermes-theme-deck-slide', idx);
+  }
+  function go(delta){ idx = Math.min(total-1, Math.max(0, idx+delta)); render(); }
+  function scaleStage(){
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const scale = Math.min(vw/1920, vh/1080);
+    document.getElementById('viewport').style.transform = 'scale('+scale+')';
+  }
+  window.addEventListener('resize', scaleStage);
+  scaleStage();
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowRight' || e.key===' ' || e.key==='PageDown') go(1);
+    else if(e.key==='ArrowLeft' || e.key==='PageUp') go(-1);
+    else if(e.key==='Home') { idx=0; render(); }
+    else if(e.key==='End') { idx=total-1; render(); }
+    else if(e.key.toLowerCase()==='n') document.body.classList.toggle('notes-on');
+  });
+  document.getElementById('stage').addEventListener('click', (e)=>{
+    const w = window.innerWidth;
+    if(e.clientX > w/2) go(1); else go(-1);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

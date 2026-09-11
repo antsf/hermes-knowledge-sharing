@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usecase Sharing Hermes — Prahu Hub</title>
+<style>
+  :root{
+    --green:#198F51; --green-dark:#0F6E3B; --orange:#FB8C00;
+    --ink:#16281F; --muted:#5C7566; --bg:#FFFFFF; --bg-soft:#F1F8F3;
+    --border:#DCEAE0;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg-soft);color:var(--ink);margin:0;padding:40px 20px 100px;}
+  .wrap{max-width:680px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+  .brand img{height:26px;}
+  .brand .x{color:var(--muted);font-size:20px;}
+  .brand b{font-size:20px;}
+  h1{font-size:32px;font-weight:800;line-height:1.2;margin-bottom:12px;}
+  .lead{font-size:17px;color:var(--muted);line-height:1.55;margin-bottom:36px;}
+  form{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:26px;}
+  label{display:block;font-size:15px;font-weight:800;color:var(--green-dark);margin-bottom:8px;}
+  label .req{color:var(--orange);}
+  label .hint{display:block;font-weight:500;color:var(--muted);font-size:14px;margin-top:4px;}
+  input[type=text], textarea, select{
+    width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:10px;
+    font-size:16px;font-family:inherit;background:var(--bg-soft);color:var(--ink);
+  }
+  textarea{resize:vertical;min-height:90px;}
+  input:focus, textarea:focus, select:focus{outline:2px solid var(--green);outline-offset:1px;background:#fff;}
+  button{
+    background:var(--green);color:#fff;border:none;border-radius:999px;
+    padding:18px 28px;font-size:18px;font-weight:800;cursor:pointer;
+  }
+  button:disabled{background:#9CC2AB;cursor:not-allowed;}
+  button:active{transform:scale(.98);}
+  .status{margin-top:16px;padding:16px;border-radius:12px;font-size:15px;display:none;}
+  .status.ok{display:block;background:#E7F6ED;color:var(--green-dark);border:1px solid #B9E4C7;}
+  .status.err{display:block;background:#FDECEA;color:#B4432A;border:1px solid #F5C6C0;}
+  .footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <img src="assets/prahu-hub-logo.png" alt="Prahu Hub">
+    <span class="x">×</span>
+    <b>Hermes</b>
+  </div>
+  <h1>Usecase kerjaan Anda</h1>
+  <div class="lead">Isi lembar ini setelah sesi knowledge sharing — ceritakan kerjaan sehari-hari Anda, kita cari tahu bersama mana yang bisa dibantu Hermes. Tidak ada jawaban salah.</div>
+
+  <form id="usecaseForm">
+    <div>
+      <label for="nama">Nama <span class="req">*</span></label>
+      <input type="text" id="nama" required autocomplete="name">
+    </div>
+
+    <div>
+      <label for="divisi">Divisi / Jabatan <span class="req">*</span>
+        <span class="hint">Misal: Operasional PH Bid Laut, CS, Finance, Admin Darat</span>
+      </label>
+      <input type="text" id="divisi" required>
+    </div>
+
+    <div>
+      <label for="produk">Produk yang paling sering ditangani</label>
+      <select id="produk">
+        <option value="">— Pilih —</option>
+        <option>PH Bid — Laut</option>
+        <option>PH Bid — Darat</option>
+        <option>RoRo — e-Ticketing</option>
+        <option>Dashboard Monitoring &amp; Billing</option>
+        <option>Lainnya / Campuran</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="kerjaan">Kerjaan sehari-hari Anda <span class="req">*</span>
+        <span class="hint">Ceritakan singkat, langkah-langkah yang biasa dilakukan</span>
+      </label>
+      <textarea id="kerjaan" required></textarea>
+    </div>
+
+    <div>
+      <label for="makanwaktu">Bagian mana yang paling berulang / memakan waktu? <span class="req">*</span></label>
+      <textarea id="makanwaktu" required></textarea>
+    </div>
+
+    <div>
+      <label for="ceklokasi">Ada bagian yang butuh "cek ke banyak tempat" dulu?
+        <span class="hint">Misal: cek status di satu sistem, cocokkan ke sistem/dokumen lain</span>
+      </label>
+      <textarea id="ceklokasi"></textarea>
+    </div>
+
+    <div>
+      <label for="laporan">Laporan/dokumen apa yang sering ditulis ulang tiap periode?</label>
+      <textarea id="laporan"></textarea>
+    </div>
+
+    <div>
+      <label for="ide">Ide Anda — bagian mana yang menurut Anda bisa dibantu Hermes?
+        <span class="hint">Boleh kosong kalau belum kepikiran, kita diskusi bareng saat sesi</span>
+      </label>
+      <textarea id="ide"></textarea>
+    </div>
+
+    <button type="submit" id="submitBtn">Kirim Usecase</button>
+    <div class="status" id="statusBox"></div>
+  </form>
+
+  <div class="footer">Knowledge Sharing "Mengenal Hermes" — Prahu Hub, 12 September 2026</div>
+</div>
+
+<script src="config.js"></script>
+<script>
+// Submits directly to the GitHub repo via the Contents API using a
+// fine-grained PAT scoped ONLY to this repo (Contents: Read+Write).
+// Token is injected at deploy time via config.js (gitignored, not committed).
+const REPO = "antsf/hermes-knowledge-sharing";
+const BRANCH = "main";
+
+document.getElementById('usecaseForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const statusBox = document.getElementById('statusBox');
+  statusBox.className = 'status';
+  btn.disabled = true;
+  btn.textContent = 'Mengirim...';
+
+  const payload = {
+    nama: document.getElementById('nama').value.trim(),
+    divisi: document.getElementById('divisi').value.trim(),
+    produk: document.getElementById('produk').value,
+    kerjaan: document.getElementById('kerjaan').value.trim(),
+    makanwaktu: document.getElementById('makanwaktu').value.trim(),
+    ceklokasi: document.getElementById('ceklokasi').value.trim(),
+    laporan: document.getElementById('laporan').value.trim(),
+    ide: document.getElementById('ide').value.trim(),
+    submittedAt: new Date().toISOString()
+  };
+
+  try {
+    if (typeof window.HERMES_FORM_TOKEN === 'undefined' || !window.HERMES_FORM_TOKEN) {
+      throw new Error('CONFIG_MISSING');
+    }
+    const token = window.HERMES_FORM_TOKEN;
+    const filename = `usecases/${Date.now()}-${payload.nama.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'')}.json`;
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${filename}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `usecase: ${payload.nama} (${payload.divisi})`,
+        content: content,
+        branch: BRANCH
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || `HTTP ${res.status}`);
+    }
+
+    statusBox.className = 'status ok';
+    statusBox.textContent = '✓ Terkirim! Terima kasih sudah berbagi cerita kerjaan Anda.';
+    document.getElementById('usecaseForm').reset();
+  } catch (err) {
+    console.error(err);
+    if (err.message === 'CONFIG_MISSING') {
+      // Fallback: no token configured — let the user download the JSON
+      // and send it manually (WhatsApp/email) instead of failing silently.
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `usecase-${payload.nama.replace(/\s+/g,'-')}.json`;
+      a.click();
+      statusBox.className = 'status err';
+      statusBox.textContent = 'Form belum terhubung ke server. File JSON sudah terdownload — kirim manual ke panitia.';
+    } else {
+      statusBox.className = 'status err';
+      statusBox.textContent = 'Gagal mengirim: ' + err.message + '. Coba lagi atau screenshot halaman ini.';
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Kirim Usecase';
+  }
+});
+</script>
+</body>
+</html>

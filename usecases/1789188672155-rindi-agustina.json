@@ -1,0 +1,11 @@
+{
+  "nama": "Rindi Agustina",
+  "divisi": "CSCT Darat",
+  "produk": "PH Bid Darat",
+  "kerjaan": "1. Terima order disistem\n2. Input data armada\n3. Arahkan driver untuk menggunakan aplk driver hub\n4. Update ke shipper terkait posisi armada \n5. Monitoring armada dari proses muat hingga bongkar selesai.",
+  "makanwaktu": "Update ke shipper terkait posisi armada",
+  "ceklokasi": "",
+  "laporan": "Khusus TCI : Gsheet update pengiriman",
+  "ide": "Update ke shipper terkait posisi armada serta laporan daily setiap malam ke TCI",
+  "submittedAt": "2026-09-12T04:51:12.155Z"
+}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Mengenal Hermes: Dampak ke Kerjaan</title>
+<title>Mengenal Hermes: Bukti Nyata & Coba Sendiri</title>
 <style>
   :root{
     --green:#198F51;
@@ -43,7 +43,6 @@
   .slide.center{align-items:center;text-align:center;}
   .slide.middle{justify-content:center;}
 
-  /* subtle depth / glass, Apple-ish */
   .glass{
     background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
     backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
@@ -79,11 +78,9 @@
 
   /* ============ COMPONENTS ============ */
 
-  /* Big statement / one-idea slide */
   .statement{flex:1;display:flex;flex-direction:column;justify-content:center;}
   .statement h1{max-width:1550px;}
 
-  /* Duel: two huge contrasting words (chatbot vs agent) */
   .duel{flex:1;display:flex;align-items:center;gap:0;margin-top:20px;}
   .duel .side{flex:1;display:flex;flex-direction:column;justify-content:center;padding:60px 70px;}
   .duel .side.no{opacity:.4;}
@@ -94,7 +91,6 @@
   .duel .divider-line{width:1px;align-self:stretch;background:var(--border);position:relative;}
   .duel .divider-line::before{content:'';position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--orange);}
 
-  /* Icon-forward single capability slide */
   .cap-hero{flex:1;display:flex;align-items:center;gap:90px;margin-top:10px;}
   .cap-hero .icon{
     flex:none;width:340px;height:340px;border-radius:44px;
@@ -109,7 +105,6 @@
   .cap-hero .txt p{font-size:24px;color:var(--muted);margin-top:22px;max-width:640px;line-height:1.55;}
   .cap-hero .txt .relevance{display:inline-flex;background:var(--bg-soft);color:var(--green-dark);border:1px solid var(--border);border-radius:999px;padding:8px 18px;font-size:15px;font-weight:700;margin-top:22px;}
 
-  /* Human quote card */
   .quote-card{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:1400px;position:relative;}
   .quote-card .mark{font-family:var(--serif);font-size:140px;color:var(--orange);line-height:.5;margin-bottom:10px;opacity:.9;}
   .quote-card blockquote{font-family:var(--serif);font-size:56px;font-weight:400;line-height:1.32;}
@@ -119,7 +114,6 @@
   .quote-orbit::before{content:'';position:absolute;inset:34px;border-radius:50%;border:1px dashed var(--border);}
   .quote-orbit::after{content:'';position:absolute;top:-6px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--orange);}
 
-  /* Story panel (human-centered narrative) */
   .story{flex:1;display:flex;gap:80px;align-items:center;margin-top:10px;}
   .story .panel{flex:1;}
   .story .panel .tag{display:inline-flex;background:var(--bg-soft);color:var(--green-dark);border:1px solid var(--border);border-radius:999px;padding:10px 22px;font-size:16px;font-weight:800;margin-bottom:26px;}
@@ -138,7 +132,6 @@
   .flowcard .step.done{opacity:.55;}
   .flowcard .step b{display:block;color:#fff;}
 
-  /* CTA slide with big button */
   .cta-block{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
   .cta-btn{
     margin-top:44px;display:inline-flex;align-items:center;gap:22px;
@@ -152,7 +145,6 @@
   .qr-box img{width:260px;height:260px;display:block;}
   .qr-box span{font-size:15px;font-weight:800;color:var(--green-dark);letter-spacing:.04em;}
 
-  /* Checklist (limitations, human & honest) */
   .honesty{flex:1;display:flex;gap:60px;margin-top:10px;}
   .honesty .col{flex:1;}
   .honesty .col .lbl{font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px;}
@@ -164,12 +156,56 @@
   .honesty .col.do .mark2{color:#fff;background:var(--green);}
   .honesty .col.dont .mark2{color:#fff;background:#B4432A;}
 
-  /* pill row */
   .pill-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px;}
   .pill{background:var(--bg-soft);color:var(--green-dark);border-radius:999px;padding:16px 30px;font-size:21px;font-weight:700;border:1px solid var(--border);}
   .slide.deep .pill{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2);}
 
   .num-tag{font-family:var(--serif);font-size:22px;color:var(--orange);}
+
+  /* Showcase card (project proof) */
+  .showcase{flex:1;display:flex;gap:80px;align-items:center;margin-top:10px;}
+  .showcase .panel{flex:1;}
+  .showcase .panel .tag{display:inline-flex;background:var(--bg-soft);color:var(--green-dark);border:1px solid var(--border);border-radius:999px;padding:10px 22px;font-size:16px;font-weight:800;margin-bottom:26px;}
+  .showcase .panel h2{font-size:48px;max-width:640px;}
+  .showcase .panel p{font-size:21px;color:var(--muted);margin-top:20px;line-height:1.55;max-width:600px;}
+  .showcase .proof{margin-top:28px;display:inline-flex;align-items:center;gap:12px;background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:16px 22px;}
+  .showcase .proof .n{font-family:var(--serif);font-size:34px;color:var(--green-dark);font-weight:700;}
+  .showcase .proof .l{font-size:15px;color:var(--muted);line-height:1.3;}
+  .slide.deep .showcase .panel .tag{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2);}
+  .slide.deep .showcase .proof{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);}
+  .slide.deep .showcase .proof .n{color:var(--orange);}
+  .slide.deep .showcase .proof .l{color:#DCF3E3;}
+
+  /* Live demo hero button + hint */
+  .demo-hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;}
+  .demo-hero h1{max-width:1450px;}
+  .demo-btn-wrap{margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:22px;}
+  .demo-btn{
+    display:inline-flex;align-items:center;gap:20px;
+    background:#fff;color:var(--green-dark);text-decoration:none;
+    padding:34px 56px;border-radius:24px;font-size:36px;font-weight:800;font-family:var(--sans);
+    box-shadow:0 30px 90px -25px rgba(0,0,0,.6);
+    border:none;cursor:pointer;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 30px 90px -25px rgba(0,0,0,.6), 0 0 0 0 rgba(251,140,0,.5); }
+    50%{ box-shadow:0 30px 90px -25px rgba(0,0,0,.6), 0 0 0 26px rgba(251,140,0,0); }
+  }
+  .demo-btn .arrow{font-family:var(--serif);font-size:40px;color:var(--orange);}
+  .demo-qr{background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 20px 50px -20px rgba(0,0,0,.4);}
+  .demo-qr img{width:220px;height:220px;display:block;}
+  .demo-qr span{font-size:14px;font-weight:800;color:var(--green-dark);letter-spacing:.04em;}
+  .demo-caption{max-width:900px;font-size:19px;color:#DCF3E3;line-height:1.5;margin-top:10px;}
+
+  /* Install steps (numbered) */
+  .steps{flex:1;display:flex;flex-direction:column;gap:0;margin-top:16px;max-width:1200px;}
+  .steps .step-row{display:flex;gap:32px;padding:26px 0;border-top:1px solid var(--border);}
+  .steps .step-row:first-child{border-top:none;}
+  .steps .step-num{flex:none;width:56px;height:56px;border-radius:50%;background:var(--green-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;font-weight:700;}
+  .steps .step-body h3{font-family:var(--sans);font-size:24px;font-weight:700;margin-bottom:8px;}
+  .steps .step-body p{font-size:19px;color:var(--muted);line-height:1.5;max-width:820px;}
+  .steps .step-body code{display:inline-block;background:var(--green-deep);color:#EFFBF3;padding:12px 18px;border-radius:10px;font-family:'SF Mono','Consolas',monospace;font-size:16px;margin-top:10px;word-break:break-all;}
 
   #progress{position:fixed;left:0;bottom:0;height:5px;background:var(--orange);z-index:70;transition:width .4s;}
   #hint{position:fixed;left:32px;bottom:24px;color:#fff;font-size:14px;font-weight:600;z-index:70;background:rgba(0,0,0,.35);padding:9px 18px;border-radius:999px;}
@@ -224,9 +260,25 @@
     .flowcard{padding:26px;}
     .flowcard .step{font-size:16px;padding:14px 0;}
 
+    .showcase{flex-direction:column;gap:20px;}
+    .showcase .panel h2{font-size:30px;}
+    .showcase .panel p{font-size:17px;}
+    .showcase .proof{margin-top:18px;}
+    .showcase .proof .n{font-size:26px;}
+
     .cta-btn{font-size:19px;padding:20px 26px;width:100%;justify-content:space-between;}
     .qr-box{position:relative;right:auto;bottom:auto;margin-top:28px;align-self:flex-start;padding:20px;}
     .qr-box img{width:180px;height:180px;}
+
+    .demo-btn{font-size:22px;padding:22px 30px;}
+    .demo-qr img{width:160px;height:160px;}
+    .demo-caption{font-size:16px;}
+
+    .steps .step-row{gap:18px;padding:18px 0;}
+    .steps .step-num{width:40px;height:40px;font-size:18px;}
+    .steps .step-body h3{font-size:19px;}
+    .steps .step-body p{font-size:16px;}
+    .steps .step-body code{font-size:13px;padding:9px 12px;}
 
     .honesty{flex-direction:column;gap:8px;}
     .honesty .item{font-size:18px;padding:16px 0;}
@@ -258,17 +310,17 @@
 <!-- 1 BRIDGE FROM PPTX -->
 <section class="slide deep center middle active" data-title="Jembatan">
   <div class="eyebrow" style="justify-content:center;">Lanjutan Sesi</div>
-  <h1>Udah kenalan.<br>Sekarang, <span class="hl">bahas kerjaannya</span>.</h1>
-  <div class="lead" style="margin:26px auto 0;text-align:center;">Bagian ini fokus ke satu hal: apa yang berubah di kerjaan kamu sehari-hari.</div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">01 / 14</div></div>
+  <h1>Itu tadi sisi serunya.<br>Sekarang, <span class="hl">bukti nyatanya</span>.</h1>
+  <div class="lead" style="margin:26px auto 0;text-align:center;">Sudah dipakai duluan di kantor kita sendiri — bukan konsep, bukan demo hipotetis.</div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">01 / 12</div></div>
 </section>
 
-<!-- 2 DIVIDER: APA ITU AI AGENT -->
+<!-- 2 DIVIDER: SUDAH DIPAKAI -->
 <section class="slide deep" data-title="Divider 1">
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
     <div class="eyebrow">Bagian Satu</div>
-    <h1>Bedanya di mana,<br>buat kerjaan kita?</h1>
-    <div class="lead">Yang mau dibahas: apa yang beneran bisa Hermes kerjain buat kita.</div>
+    <h1>Sudah jalan<br>di produk kita.</h1>
+    <div class="lead">Dua contoh nyata dari kerjaan sehari-hari — bug tracking, sampai rilis produk.</div>
   </div>
   <svg class="fig" style="right:-60px;bottom:-70px;width:380px;height:440px;opacity:.14;" viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#fff" stroke-width="1" fill="none">
@@ -280,36 +332,65 @@
       <circle cx="200" cy="90" r="70" stroke-dasharray="3 5" opacity=".5"/>
     </g>
   </svg>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">02 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">02 / 12</div></div>
 </section>
 
-<!-- 3 DUEL: CHATGPT VS HERMES -->
-<section class="slide" data-title="Duel">
-  <div class="eyebrow">Satu Beda Besar</div>
-  <h2>Nanya, atau beneran dikerjain?</h2>
-  <div class="lead" style="margin-top:-10px;margin-bottom:10px;">ChatGPT kasih jawaban. Hermes lanjut sampai kerjaannya kelar.</div>
-  <div class="duel">
-    <div class="side no">
-      <div class="k">ChatGPT</div>
-      <h3>Jawabannya ada di layar.</h3>
-      <p>Kamu tanya, dia jawab. Habis itu kamu yang harus buka aplikasi, cek data, sampai kirim hasilnya sendiri.</p>
+<!-- 3 SHOWCASE: DRIVER HUB -->
+<section class="slide" data-title="Showcase Driver Hub">
+  <div class="eyebrow">Bukti Nyata — Driver Hub</div>
+  <div class="showcase">
+    <div class="panel">
+      <div class="tag">Driver Hub (Mobile App)</div>
+      <h2>Dari laporan bug sampai fix ke server, satu alur.</h2>
+      <p>Hermes baca board bug di Mattermost, investigasi root cause langsung di kode, kasih rekomendasi. Setelah disetujui: fix, tes di HP asli, buat Pull Request, update status board — semua dilaporkan dengan bukti, bukan cuma klaim "sudah beres".</p>
+      <div class="proof">
+        <div class="n">→ PR</div>
+        <div class="l">Fix nyata sampai ke tahap Pull<br>Request siap review, bukan draft</div>
+      </div>
     </div>
-    <div class="divider-line"></div>
-    <div class="side yes">
-      <div class="k">Hermes</div>
-      <h3>Kerjaannya udah kelar.</h3>
-      <p>Dia yang buka aplikasi, ambil data, benerin, sampai kirim hasilnya. Kamu tinggal cek dan cross-check.</p>
+    <div class="visual">
+      <div class="flowcard">
+        <div class="step done"><div class="dot"></div><div><b>Baca board bug Mattermost</b>rekomendasi root cause + fix</div></div>
+        <div class="step done"><div class="dot"></div><div><b>Investigasi kode</b>cari akar masalah, bukan tebak-tebakan</div></div>
+        <div class="step done"><div class="dot"></div><div><b>Tes di HP fisik</b>verifikasi nyata sebelum PR dibuat</div></div>
+        <div class="step"><div class="dot"></div><div><b>Buat PR + update board</b>siap direview tim</div></div>
+      </div>
     </div>
   </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">03 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">03 / 12</div></div>
 </section>
 
-<!-- 4 DIVIDER: KENALAN HERMES -->
+<!-- 4 SHOWCASE: TRANTARA -->
+<section class="slide soft" data-title="Showcase Trantara">
+  <div class="eyebrow">Bukti Nyata — Trantara</div>
+  <div class="showcase">
+    <div class="panel">
+      <div class="tag">Trantara</div>
+      <h2>Bug production, ditangani sampai selesai.</h2>
+      <p>Investigasi bug lewat log dan kode nyata, jalankan migrasi database yang macet, verifikasi hasilnya langsung ke server — semua dikerjakan sesuai alur kerja tim: root cause dulu, baru fix, baru minta approval sebelum apa pun disentuh ke production.</p>
+      <div class="proof">
+        <div class="n">Root Cause</div>
+        <div class="l">Bukan tambal gejala — cari akar<br>masalah dulu sebelum benerin</div>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="flowcard">
+        <div class="step done"><div class="dot"></div><div><b>Analisis error di log</b>data asli, bukan asumsi</div></div>
+        <div class="step done"><div class="dot"></div><div><b>Jalankan migrasi DB</b>yang tadinya macet</div></div>
+        <div class="step done"><div class="dot"></div><div><b>Verifikasi ke server</b>pastikan benar-benar jalan</div></div>
+        <div class="step"><div class="dot"></div><div><b>Laporan dengan bukti</b>tidak sekadar bilang "sudah"</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">04 / 12</div></div>
+</section>
+
+<!-- 5 DIVIDER: BUKAN CUMA ENGINEERING -->
 <section class="slide deep" data-title="Divider 2">
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
     <div class="eyebrow">Bagian Dua</div>
-    <h1>Bukan pengganti,<br><span class="hl">rekan kerja</span>.</h1>
-    <div class="lead">Hermes itu AI agent, bisa mikir dan ngerjain kerjaan yang biasanya makan waktu kamu. Jadi kamu bisa fokus ke yang lebih strategis.</div>
+    <h1>Bukan cuma<br><span class="hl">urusan engineering</span>.</h1>
+    <div class="lead">Kerjaan sehari-hari tim IT lain juga sudah dibantu — bukan cuma yang teknis banget.</div>
   </div>
   <svg class="fig" style="left:-70px;top:-50px;width:340px;height:390px;opacity:.13;" viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#fff" stroke-width="1" fill="none">
@@ -320,157 +401,49 @@
       <circle cx="200" cy="200" r="180" stroke-dasharray="2 8" opacity=".3"/>
     </g>
   </svg>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">04 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">05 / 12</div></div>
 </section>
 
-<!-- 5 HUMAN QUOTE -->
-<section class="slide soft" data-title="Quote">
-  <div class="quote-card">
-    <div class="quote-orbit"></div>
-    <div class="mark">"</div>
-    <blockquote>Kerjaan yang berulang, biar Hermes yang pegang. Kamu pegang yang butuh mikir.</blockquote>
-    <cite>Kira-kira begitu cara kerjanya</cite>
+<!-- 6 WORKFLOW HARIAN -->
+<section class="slide" data-title="Workflow Harian">
+  <div class="eyebrow">Workflow Harian — Tim Engineering & Product</div>
+  <h2 style="max-width:1300px;">Yang dikerjain Hermes setiap hari, bukan cuma sesekali.</h2>
+  <div class="lead" style="margin-bottom:16px;">Beberapa contoh nyata dari kerjaan harian tim engineering &amp; product — bukan skenario karangan.</div>
+  <div class="pill-row">
+    <div class="pill">Triage bug harian dari board Mattermost</div>
+    <div class="pill">Kelola beberapa repo &amp; rilis app sekaligus</div>
+    <div class="pill">Catat progress kerjaan biar tim lain nyambung</div>
+    <div class="pill">Kerja lintas device — HP, laptop kantor, dari mana aja</div>
   </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">05 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">06 / 12</div></div>
 </section>
 
-<!-- 6 CAPABILITY 1: CHAT & TASK BOARD (universal, all divisions) -->
-<section class="slide" data-title="Kemampuan 1">
-  <div class="eyebrow">Yang Bisa Ia Bantu — 1 / 3</div>
-  <div class="cap-hero">
-    <div class="icon">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="35" y="50" width="130" height="90" rx="16" stroke="#fff" stroke-width="2"/>
-        <path d="M65 140 L50 165 L85 140" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="75" cy="95" r="6" fill="#FB8C00"/>
-        <circle cx="100" cy="95" r="6" fill="#FB8C00"/>
-        <circle cx="125" cy="95" r="6" fill="#FB8C00"/>
-      </svg>
-    </div>
-    <div class="txt">
-      <span class="num">01</span>
-      <h2>Bantu di Mattermost</h2>
-      <p>Hermes bisa baca chat, jawab pertanyaan, dan update status task di Mattermost. Nggak perlu buka aplikasi lain buat cek progress kerjaan.</p>
-      <div class="relevance">Relevan buat semua divisi</div>
-    </div>
-  </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">06 / 14</div></div>
-</section>
-
-<!-- 7 CAPABILITY 2: DOKUMEN & CATATAN (universal, all divisions) -->
-<section class="slide soft" data-title="Kemampuan 2">
-  <div class="eyebrow">Yang Bisa Ia Bantu — 2 / 3</div>
-  <div class="cap-hero">
-    <div class="icon">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M60 30 H120 L150 60 V170 H60 Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M120 30 V60 H150" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
-        <line x1="80" y1="90" x2="130" y2="90" stroke="#FB8C00" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="80" y1="110" x2="130" y2="110" stroke="#FB8C00" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="80" y1="130" x2="110" y2="130" stroke="#FB8C00" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="txt">
-      <span class="num">02</span>
-      <h2>Bikin laporan rutin</h2>
-      <p>Laporan harian, mingguan, atau bulanan yang biasanya kamu susun manual dari beberapa sumber, sekarang Hermes yang kumpulin dan rapikan.</p>
-      <div class="relevance">Relevan buat semua divisi</div>
-    </div>
-  </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">07 / 14</div></div>
-</section>
-
-<!-- 8 CAPABILITY 3: BROWSER & HP (universal, all divisions) -->
-<section class="slide" data-title="Kemampuan 3">
-  <div class="eyebrow">Yang Bisa Ia Bantu — 3 / 3</div>
-  <div class="cap-hero">
-    <div class="icon">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="55" y="25" width="90" height="150" rx="14" stroke="#fff" stroke-width="2"/>
-        <line x1="80" y1="150" x2="120" y2="150" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <path d="M75 70 L100 95 L125 70" stroke="#FB8C00" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="100" y1="95" x2="100" y2="120" stroke="#FB8C00" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="txt">
-      <span class="num">03</span>
-      <h2>Kerja di dashboard kamu</h2>
-      <p>Buka dashboard, cari data, isi form, ambil laporan. Hal-hal yang biasa kamu klik satu-satu di browser, sekarang bisa dikerjain Hermes.</p>
-      <div class="relevance">Relevan buat semua divisi</div>
-    </div>
-  </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">08 / 14</div></div>
-</section>
-
-<!-- 10 ACCESS -->
+<!-- 7 ACCESS -->
 <section class="slide" data-title="Akses">
   <div class="eyebrow">Cara Mengaksesnya</div>
   <h2 style="max-width:1200px;">Cukup chat di Telegram</h2>
   <div class="lead">Nggak perlu install aplikasi baru. Ngobrol seperti biasa, Hermes yang kerjain.</div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">09 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">07 / 12</div></div>
 </section>
 
-<!-- 11 DIVIDER: MARI CARI BERSAMA -->
-<section class="slide deep" data-title="Divider 3">
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-    <div class="eyebrow">Bagian Tiga</div>
-    <h1>Cerita<br>dulu, yuk.</h1>
-    <div class="lead">Apa pekerjaan harian kamu yang bisa di-automation pakai Hermes?</div>
-  </div>
-  <svg class="fig" style="right:-50px;top:-40px;width:300px;height:345px;opacity:.13;" viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#fff" stroke-width="1" fill="none">
-      <circle cx="200" cy="90" r="46"/>
-      <path d="M200 136 L200 300"/>
-      <path d="M200 170 L60 230 M200 170 L340 230"/>
-      <circle cx="200" cy="90" r="70" stroke-dasharray="3 5" opacity=".5"/>
-    </g>
-  </svg>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">10 / 14</div></div>
-</section>
-
-<!-- 12 STORY: ONE COMPELLING USECASE -->
-<section class="slide soft" data-title="Story">
-  <div class="eyebrow">Contoh Nyata</div>
-  <div class="story">
-    <div class="panel">
-      <div class="tag">PHBID Darat</div>
-      <h2>"Cari order ini, rangkum, kirim ke email saya."</h2>
-      <p>Kamu kasih perintah, Hermes yang proses: masuk sistem, cari data order, susun jadi laporan, kirim ke email kamu. Kamu tinggal cek hasilnya sebelum dipakai.</p>
-      <div class="also">
-        <div class="lbl">Juga bisa buat divisi lain</div>
-        <ul>
-          <li>Rekap penjualan mingguan dari beberapa sheet jadi satu laporan</li>
-          <li>Susun laporan absensi atau payroll bulanan jadi format siap kirim</li>
-          <li>Cek status invoice dari beberapa klien sekaligus</li>
-        </ul>
-      </div>
-    </div>
-    <div class="visual">
-      <div class="flowcard">
-        <div class="step done"><div class="dot"></div><div><b>Buka halaman PHBID Darat</b>cari order berdasarkan ID</div></div>
-        <div class="step done"><div class="dot"></div><div><b>Ambil detail lengkap</b>data order, lelang, pengiriman</div></div>
-        <div class="step done"><div class="dot"></div><div><b>Susun jadi PDF rapi</b>ringkasan siap baca</div></div>
-        <div class="step"><div class="dot"></div><div><b>Kirim ke email kamu</b>tinggal review sebelum dipakai</div></div>
+<!-- 8 LIVE DEMO: BIG BUTTON -->
+<section class="slide deep center" data-title="Live Demo">
+  <div class="demo-hero">
+    <div class="eyebrow" style="justify-content:center;">Lihat Langsung, Sekarang</div>
+    <h1>Satu perintah.<br><span class="hl">Beberapa aplikasi sekaligus.</span></h1>
+    <div class="demo-caption">Mattermost dibaca, Google Sheet dibuat, email terkirim, reminder masuk Google Calendar — semua dari satu pesan Telegram, di depan mata kita.</div>
+    <div class="demo-btn-wrap">
+      <a class="demo-btn" href="https://t.me/hermes_m5o6wbxvlrfzheyr_bot?text=Cek%20board%20bug%20Mattermost%20%22Bug%20%5BSTG%5D%20DRIVER%20-%20HUB%22%2C%20rangkum%20semua%20bug%20status%20PERBAIKAN%20BUG%20ke%20Google%20Sheet%20baru%2C%20kirim%20email%20rangkumannya%20ke%20saya%2C%20dan%20tambahkan%20reminder%20follow-up%20besok%20jam%2010%20pagi%20di%20Google%20Calendar." target="_blank" rel="noopener">Jalankan Demo Ini <span class="arrow">→</span></a>
+      <div class="demo-qr">
+        <img src="assets/qr-live-demo.png" alt="QR buka Telegram dengan pesan demo" onerror="this.style.display='none'">
+        <span>SCAN UNTUK LIHAT PESANNYA</span>
       </div>
     </div>
   </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">11 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">08 / 12</div></div>
 </section>
 
-<!-- 13 CTA: FORM -->
-<section class="slide deep" data-title="CTA Form">
-  <div class="eyebrow">Giliran Kamu</div>
-  <div class="cta-block">
-    <h1 style="max-width:1150px;">Kalau ada kerjaan<br>yang bisa <span class="hl">Hermes bantu</span></h1>
-    <div class="lead">Tulis di form ini. Nggak harus sekarang, kapan aja.</div>
-    <a class="cta-btn" href="usecase-form.html" target="_blank" rel="noopener">Isi Usecase Kamu <span class="arrow">→</span></a>
-    <div class="cta-sub">antsf.github.io/hermes-knowledge-sharing/usecase-form.html</div>
-  </div>
-  <div class="qr-box"><img src="assets/qr-usecase-form.png" alt="QR ke form usecase" onerror="this.style.display='none'"><span>SCAN SAYA</span></div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">12 / 14</div></div>
-</section>
-
-<!-- 14 HONESTY: SECURITY & DATA -->
+<!-- 9 KEAMANAN -->
 <section class="slide" data-title="Keamanan">
   <div class="eyebrow">Soal Keamanan Data &amp; Aksi</div>
   <h2>Nggak asal jalan sendiri</h2>
@@ -486,29 +459,81 @@
       <div class="item"><div class="mark2">✕</div>Bisa aja salah. Hasil kerjanya tetap perlu dicek, apalagi yang nyangkut ke client.</div>
     </div>
   </div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">13 / 14</div></div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">09 / 12</div></div>
 </section>
 
-<!-- 15 CLOSING -->
+<!-- 10 UNDANGAN STAFF LAIN -->
+<section class="slide soft" data-title="Undangan">
+  <div class="eyebrow">Giliran Cerita Kamu</div>
+  <h2 style="max-width:1300px;">Yang tadi itu baru dari tim engineering &amp; product.</h2>
+  <div class="lead">Kalau tim kamu juga punya kerjaan harian yang bisa dibantu Hermes — sales, finance, HR, CSCT, apa saja — cerita kamu ditunggu di form nanti.</div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">10 / 12</div></div>
+</section>
+
+<!-- 11 HANDS-ON: INSTALL SENDIRI -->
+<section class="slide soft" data-title="Hands On Install">
+  <div class="eyebrow">Giliran Kamu — Coba di Laptop Sendiri</div>
+  <h2 style="max-width:1300px;">4 langkah, langsung bisa dipakai hari ini.</h2>
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Install Hermes (Linux / macOS / WSL2)</h3>
+        <p>Buka Terminal, tempel perintah ini:</p>
+        <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Ambil token AI gratis di Neosantara</h3>
+        <p>Daftar di app.neosantara.xyz pakai akun Google atau GitHub (langsung jadi, tanpa nunggu email verifikasi). Dapat saldo gratis Rp 20.000 + reset Rp 10.000 tiap bulan. Ambil API Key di halaman /api-keys setelah masuk.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Hubungkan ke Hermes</h3>
+        <p>Di Terminal yang sama, jalankan:</p>
+        <code>hermes model</code>
+        <p style="margin-top:10px;">Pilih "custom endpoint", isi Base URL <code style="display:inline;margin:0;">https://api.neosantara.xyz/v1</code> dan API Key yang tadi diambil.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Mulai chat</h3>
+        <p>Jalankan <code style="display:inline;margin:0;">hermes</code> di Terminal, dan langsung ngobrol. Selesai.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">11 / 12</div></div>
+</section>
+
+<!-- 12 CLOSING + FORM CTA -->
 <section class="slide deep center middle" data-title="Closing">
   <div class="brand-row" style="margin-bottom:40px;justify-content:center;">
     <img src="assets/prahu-hub-logo.png" alt="Prahu Hub">
     <span class="x">×</span>
     <span class="word">Hermes</span>
   </div>
-  <h1>Hermes ngurusin yang berulang.<br>Kamu fokus ke <span class="hl">yang strategis</span>.</h1>
-  <div class="lead" style="margin:26px auto 0;text-align:center;">Matur nuwun. Kalau ada yang mau ditanyain, silakan.</div>
-  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">14 / 14</div></div>
+  <h1>Sudah dipakai. Sudah terbukti.<br>Sekarang, <span class="hl">giliran kamu</span>.</h1>
+  <div class="lead" style="margin:26px auto 0;text-align:center;">Punya kerjaan yang bisa dibantu Hermes? Tulis di form usecase, atau langsung coba sendiri.</div>
+  <a class="cta-btn" href="usecase-form.html" target="_blank" rel="noopener" style="margin-top:44px;">Isi Usecase Kamu <span class="arrow">→</span></a>
+  <div class="cta-sub">antsf.github.io/hermes-knowledge-sharing/usecase-form.html</div>
+  <div class="qr-box"><img src="assets/qr-usecase-form.png" alt="QR ke form usecase" onerror="this.style.display='none'"><span>SCAN SAYA</span></div>
+  <div class="lead" style="margin:24px auto 0;text-align:center;">Matur nuwun. Kalau ada yang mau ditanyain, silakan.</div>
+  <div class="footer"><div class="logo-mark"><img src="assets/prahu-hub-logo.png"></div><div class="num">12 / 12</div></div>
 </section>
 
 </div></div>
 
 <div id="progress"></div>
-<div id="counter">1 / 14</div>
+<div id="counter">1 / 12</div>
 <div id="hint">← → navigasi</div>
 <div id="mobileNav">
   <button id="mobPrev" aria-label="Sebelumnya">‹ Kembali</button>
-  <span class="cnt" id="mobCounter">1 / 14</span>
+  <span class="cnt" id="mobCounter">1 / 12</span>
   <button id="mobNext" aria-label="Selanjutnya">Lanjut ›</button>
 </div>
 

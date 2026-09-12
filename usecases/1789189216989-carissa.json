@@ -1,0 +1,11 @@
+{
+  "nama": "Carissa",
+  "divisi": "Sales",
+  "produk": "Lainnya / Campuran",
+  "kerjaan": "Mencari dan mengembangkan leads/customer potensial, melakukan proses bidding/penawaran disistem, menginput dan memproses order di sistem, menarik,merekap serta mengolah data kebutuhan order, kemudian melakukan follow up kepada customer terkait kebutuhan pengiriman.",
+  "makanwaktu": "melakukan rekap order customer pada spreadsheet secara manual untuk dibantu FU oleh tim csct ke transporter lalu setelah diinput dari sisi sales order disistem. jika dari transporter melakukan penginputan di hari selanjutnya(tidak sesuai DO)maka dari sisi sales setelah order melakukan pengeditan tanggal pemuatan sesuai rekapan dari customer",
+  "ceklokasi": "cek spreadsheet, cek data order disistem dengan spreadsheet apakah sudah sesuai atau tidak, cek tanggal DO di sheet dan sistem.",
+  "laporan": "laporan rekap order harian yang sudah terorder disistem maupun rekap yang masih harga dan menunggu jadwal",
+  "ide": "harapannya dari Hermes bisa melakukan cek di sheet dan sistem dan menyeseuaikan tanggal DO yang sesuai dengan sheet dan sistem \nmembantu sales dalam melakukan order disistem untuk all shipper apalagi jika akhir bulan \nmembantu sales dalam melakukan bidding disistem apalagi jika kebutuhan bidding dibutuhkan secara cepat, apalagi jika pergantian taun selalu lelang yang dibuat dari all shipper dibuat bersamaan",
+  "submittedAt": "2026-09-12T05:00:16.989Z"
+}

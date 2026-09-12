@@ -1,0 +1,11 @@
+{
+  "nama": "eka mahendra",
+  "divisi": "CSCT Laut",
+  "produk": "PH Bid Laut",
+  "kerjaan": "Setiap hari remind update tracking ke transporter-transporter untuk order yang belum di update. Mulai dari awal step tracking Stuffing - Kapal Berlayar - Kapal Sandar - Rencana Dooring - Dooring - SJ Diterima Agen.",
+  "makanwaktu": "Semua step tracking.",
+  "ceklokasi": "Ada: Kapal Berlayar - Kapal Sandar",
+  "laporan": "Nama Shipper, Order ID, Rute, Kontainer, Nama Kapal",
+  "ide": "Semua step tracking. Hermes remind langsung ke transporter, ambil data dari sistem PH Bid triger dari Tgl Permintaan Muat/tgl ETD/tgl ETA",
+  "submittedAt": "2026-09-12T04:56:41.389Z"
+}

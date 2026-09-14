@@ -478,20 +478,29 @@
     <div class="step-row">
       <div class="step-num">1</div>
       <div class="step-body">
-        <h3>Install Hermes (Linux / macOS / WSL2)</h3>
-        <p>Buka Terminal, tempel perintah ini:</p>
-        <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>
+        <h3>Punya Windows? Setup WSL dulu</h3>
+        <p>Buka PowerShell/Terminal sebagai Administrator, tempel perintah ini, lalu restart laptop saat diminta:</p>
+        <code>wsl --install</code>
+        <p style="margin-top:10px;">Setelah restart, WSL otomatis buka Ubuntu dan minta buat username + password baru (bebas, ini akun Linux lokal, bukan akun Windows). Kalau sudah ada WSL sebelumnya, langsung ke langkah 2 lewat Terminal Ubuntu.</p>
       </div>
     </div>
     <div class="step-row">
       <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Install Hermes (Linux / macOS / WSL2)</h3>
+        <p>Di Terminal Ubuntu (WSL) / Terminal biasa (Linux, macOS), tempel perintah ini:</p>
+        <code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
       <div class="step-body">
         <h3>Ambil token AI gratis di Neosantara</h3>
         <p>Daftar di app.neosantara.xyz pakai akun Google atau GitHub (langsung jadi, tanpa nunggu email verifikasi). Dapat saldo gratis Rp 20.000 + reset Rp 10.000 tiap bulan. Ambil API Key di halaman /api-keys setelah masuk.</p>
       </div>
     </div>
     <div class="step-row">
-      <div class="step-num">3</div>
+      <div class="step-num">4</div>
       <div class="step-body">
         <h3>Hubungkan ke Hermes</h3>
         <p>Di Terminal yang sama, jalankan:</p>
@@ -500,7 +509,7 @@
       </div>
     </div>
     <div class="step-row">
-      <div class="step-num">4</div>
+      <div class="step-num">5</div>
       <div class="step-body">
         <h3>Mulai chat</h3>
         <p>Jalankan <code style="display:inline;margin:0;">hermes</code> di Terminal, dan langsung ngobrol. Selesai.</p>

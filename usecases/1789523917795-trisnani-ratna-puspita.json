@@ -1,0 +1,11 @@
+{
+  "nama": "trisnani ratna puspita",
+  "divisi": "Finance",
+  "produk": "RoRo",
+  "kerjaan": "1. buka task dan isi rencana yg akan dikerjakan hari ini\n2. buka web roro dan spreadsheet data untuk cek tiket masuk apakah sudah sesuai \n3. cek xendit dan tarik dana yang ada dan lakukan pencatatan di spreadsheet penjualan\n4. cek mutasi rekening bank bca dan mandiri , bila ada uang masuk update di data order untuk proses reimburse ke transporter\n5. cek kapal berangkat, siapkan data yang akan di reimburse. bila sudah di transfer potong dana admin bank di web roro dan spreadsheet\n6. kontrol deposit roro bila saldo dibawah 5jt buat kwitansi dan laporan pemakaian saldo\nupdate penjualan pembelian (roro, ph instan, phbid) dan cek saldo harus balance dengan di mutasi bank\n7. cek pengeluaran uang kas dan print transaksi harian\n8. rekap pemakaian saldo smg/ph instan . cek antara woro2 dan permintaan orderan harus sesuai\n9. cek pembelian untuk rekap pajak, buat bukti potong pph di coretax dan buat kode billing pembayaran. bila sudah di bayar collect data dan print untuk arsip lalu file dikelompokan sesuai masa pajak dan jenis pph dan diemail ke pak ben\n10. update admin fee va bank dari phbid\n11. update pp-jn dan pp smg\n12. cek tagihan resi pengiriman dokumen lion\n13. pembayaran operasioal kantor (wifi, listrik,air, tagihan bpjs, gaji karyawan, parkir pak ben, sewa kantor)\n14. print jurnal keuangan untuk arsip dan diberi bukti transaksi",
+  "makanwaktu": "rekonsiliasi bank, karena misal tgl 1 sudah balance dan waktu pengecekan tgl 6 saldo tidak balance biasanya karna kurang fokus saat update bukti potong di spreadsheet ada yg tidak sengaja terhapus jadi harus mulai dari tanggal 1 untuk cek saldo bank",
+  "ceklokasi": "dana yang masuk harus di cek ke 3 spreadsheet berbeda untuk pencocokan data",
+  "laporan": "tidak ada, sejauh ini hanya pengecekan berkala dan untuk laporan2 sudah dicicil harian jadi saat pelaporan bulanan tinggal cek ulang yg sudah dicicil",
+  "ide": "belum kepikiran sih karna data rekening itu sangat sensitif",
+  "submittedAt": "2026-09-16T01:58:37.795Z"
+}

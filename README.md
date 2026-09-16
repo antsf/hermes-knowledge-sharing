@@ -5,11 +5,11 @@ Sabtu 12 September 2026. Dihosting via GitHub Pages.
 
 ## Halaman
 
-- **`home.html`** — landing page navigasi
-- **`index.html`** — deck utama, tema Prahu Hub (hijau-oranye)
-- **`index-hermes-theme.html`** — variant tema situs Hermes Agent (biru elektrik)
-- **`index-combo.html`** — variant kombinasi Prahu Hub × Hermes
-- **`usecase-form.html`** — form isian usecase kerjaan staff, submit langsung
+- **[`home.html`](https://antsf.github.io/hermes-knowledge-sharing/home.html)** — landing page navigasi
+- **[`index.html`](https://antsf.github.io/hermes-knowledge-sharing/index.html)** — deck utama, tema Prahu Hub (hijau-oranye)
+- **[`index-hermes-theme.html`](https://antsf.github.io/hermes-knowledge-sharing/index-hermes-theme.html)** — variant tema situs Hermes Agent (biru elektrik)
+- **[`index-combo.html`](https://antsf.github.io/hermes-knowledge-sharing/index-combo.html)** — variant kombinasi Prahu Hub × Hermes
+- **[`usecase-form.html`](https://antsf.github.io/hermes-knowledge-sharing/usecase-form.html)** — form isian usecase kerjaan staff, submit langsung
   ke `usecases/*.json` di repo ini via GitHub Contents API
 
 ## Navigasi Deck

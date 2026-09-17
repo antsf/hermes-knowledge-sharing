@@ -1,0 +1,11 @@
+{
+  "nama": "Maria Magdalena Jessika",
+  "divisi": "Sales",
+  "produk": "Lainnya / Campuran",
+  "kerjaan": "Proses order di sistem (termasuk ubah tanggal permintaan muat, menunggu transporter input jadwal & harga), create bidding lelang kontrak, weekly report perbandingan periode, buat surat penawaran FKS, rekap Excel pemenang lelang kontrak, sinkronisasi excel SPS vs order di sistem, dan mencari leads.",
+  "makanwaktu": "Create Bidding (~1 jam untuk 38 lelang kontrak), Excel Data Pemenang Lelang Kontrak (~45 menit copy-paste manual harga & transporter), dan sinkronisasi excel SPS vs order (~45 menit cocokkan satu per satu).",
+  "ceklokasi": "Ya, harus cocokkan data antara excel SPS dengan sistem order, dan copy data pemenang lelang satu per satu dari sistem ke Excel/PDF.",
+  "laporan": "Weekly Report perbandingan periode, Excel Data Pemenang Lelang Kontrak, Surat Penawaran FKS.",
+  "ide": "1. Create Order — bantu percepat proses order di sistem (saat ini ~4 menit/order, tergantung transporter input jadwal & harga)\n2. Create Bidding — bantu batch lelang kontrak (saat ini ~1 jam untuk 38 lelang)\n3. Weekly Report — bantu bandingkan otomatis dengan periode yang sama\n4. Surat Penawaran FKS — bantu sesuaikan otomatis sesuai order (saat ini ~15 menit manual)\n5. Excel Data Pemenang Lelang Kontrak — otomatisasi copy harga & transporter, lalu export ke Excel/PDF (saat ini ~45 menit)\n6. Sinkronisasi otomatis excel SPS dengan data yang sudah terorder, agar tidak ada yang terlewat/skip (saat ini ~45 menit manual)\n7. Bantu mencari leads menggunakan Hermes",
+  "submittedAt": "2026-09-17T07:03:30.869Z"
+}

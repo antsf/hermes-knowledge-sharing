@@ -1,0 +1,11 @@
+{
+  "nama": "Rahmahyanti Ramadhan",
+  "divisi": "Finance",
+  "produk": "Lainnya / Campuran",
+  "kerjaan": "Menangani rekapitulasi OS, pencatatan reimbursement vendor yang pakai PHBID Payment, pengecekan & pembuatan PKS vendor (termasuk cross-check PKS lama vs baru), serta rekonsiliasi bank dan payment gateway.",
+  "makanwaktu": "Rekapitulasi manual (OS mingguan, reimbursement, rekonsiliasi bank & payment gateway) dan pengecekan PKS satu per satu secara manual.",
+  "ceklokasi": "Ya, harus cek data PKS lama vs baru di banyak tempat/dokumen, serta cocokkan data bank dan payment gateway secara manual.",
+  "laporan": "Rekap OS mingguan, rekap reimbursement vendor, laporan rekonsiliasi bank dan payment gateway.",
+  "ide": "1. Rekapitulasi OS setiap Senin, auto dikirim ke PIC OS masing-masing\n2. Rekap otomatis setiap ada transaksi reimbursement ke vendor yang pakai PHBID Payment (satu pintu, tidak manual)\n3. Cek & bandingkan semua PKS terbaru vs sebelumnya otomatis saat create PKS vendor (apa yang belum lengkap/berbeda)\n4. Otomatisasi rekap & reminder setiap PKS yang akan expired\n5. Rekap semua kejadian per vendor agar bisa antisipasi penanganan ke depan\n6. Rekonsiliasi bank\n7. Rekonsiliasi payment gateway\n8. Update PKS transporter extend\n9. Cari data lama yang tidak diketahui lokasinya, tampilkan data & perjanjiannya, lalu rekap ulang apa yang perlu dihighlight",
+  "submittedAt": "2026-09-17T07:03:07.775Z"
+}
